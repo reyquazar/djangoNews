@@ -1,10 +1,10 @@
 {% extends 'news/base.html' %}
 
 {% block content %}
-<h2>{{ article.title }}</h2>
-<p>{{ article.content|urlizetrunc }}</p>
-{% if article.photo %}
-    <img src="{{ article.photo.url }}" alt="{{ article.title }}">
-{% endif %}
-<p>Sources: {{ article.sources|urlizetrunc }}</p>
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.content|urlizetrunc }}</p>
+    {% if article.photo %}
+        <img src="{{ article.photo.url }}" alt="{{ article.title }}">
+    {% endif %}
+    <p>Sources: {{ article.sources|urlizetrunc }}</p>
 {% endblock %}
