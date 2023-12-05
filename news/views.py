@@ -32,7 +32,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            auth_login(request, user)  # Log the user in after re   gistration
+            auth_login(request, user)
             return redirect('home')
     else:
         form = UserCreationForm()

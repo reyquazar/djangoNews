@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Your Website Title{% endblock %}</title>
+    <title>{% block title %}News Portal{% endblock %}</title>
 
     <style>
         body {
@@ -62,19 +62,16 @@
 </head>
 <body>
 <header>
-    <h1>Your Website</h1>
+    <h1>News</h1>
 </header>
 
 <nav>
-    <!-- Navigation links go here -->
     <ul>
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'add_article' %}">Add Article</a></li>
         {% if user.is_authenticated %}
-            <!-- If the user is authenticated, display a logout link -->
             <li><a href="{% url 'logout' %}">Logout</a></li>
         {% else %}
-            <!-- If the user is not authenticated, display a register and login link -->
             <li><a href="{% url 'register' %}">Register</a></li>
             <li><a href="{% url 'login' %}">Login</a></li>
         {% endif %}
@@ -86,13 +83,12 @@
 </section>
 
 <aside>
-    <!-- Sidebar content goes here -->
     <h2>Sidebar</h2>
     <p>This is the sidebar content.</p>
 </aside>
 
 <footer>
-    <p>&copy; 2023 Your Website. All rights reserved.</p>
+    <p>&copy; 2023 reyquazar</p>
 </footer>
 </body>
 </html>
