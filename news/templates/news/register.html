@@ -1,6 +1,14 @@
 {% extends 'news/base.html' %}
 
 {% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="{% if message.tags %}alert alert-{{ message.tags }}{% endif %}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
 <h2>Register</h2>
 <form method="post">
     {% csrf_token %}

@@ -3,8 +3,8 @@
 {% block content %}
 <h2>Latest Articles</h2>
 {% for article in articles %}
-    <h3>{{ article.title }}</h3>
-    <p>{{ article.content }}</p>
+    <h3><a href="{% url 'article_detail' article.id %}">{{ article.title|truncatewords_html:5 }}</a></h3>
+    <p>{{ article.content|truncatewords_html:30|urlize }}</p>
     <p>Author: {{ article.author.username }}</p>
     <p>Published on: {{ article.created_at }}</p>
 {% endfor %}

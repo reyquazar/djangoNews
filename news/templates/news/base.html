@@ -62,7 +62,7 @@
 </head>
 <body>
 <header>
-    <h1>News</h1>
+    <h1>NEWS</h1>
 </header>
 
 <nav>
@@ -70,7 +70,12 @@
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'add_article' %}">Add Article</a></li>
         {% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li><a href="{% url 'logout' %}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+            <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                {% csrf_token %}
+            </form>
+
         {% else %}
             <li><a href="{% url 'register' %}">Register</a></li>
             <li><a href="{% url 'login' %}">Login</a></li>
@@ -78,13 +83,14 @@
     </ul>
 </nav>
 
+
 <section>
     {% block content %}{% endblock %}
 </section>
 
 <aside>
-    <h2>Sidebar</h2>
-    <p>This is the sidebar content.</p>
+    <h2>AD</h2>
+    <p>Your advertisement could be here.</p>
 </aside>
 
 <footer>
