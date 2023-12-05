@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Article
 from .forms import ArticleForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login as auth_login
+from django.contrib import messages
 
 
 def home(request):
@@ -20,13 +23,7 @@ def add_article(request):
             return redirect('home')
     else:
         form = ArticleForm()
-
     return render(request, 'news/add_article.html', {'form': form})
-
-
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login as auth_login
-from django.contrib import messages
 
 
 def register(request):
@@ -35,9 +32,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
-
             messages.success(request, 'Registration successful. You are now logged in.')
-
             return redirect('home')
     else:
         form = UserCreationForm()
