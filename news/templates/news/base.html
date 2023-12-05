@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Website Title{% endblock %}</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            float: left;
+            width: 20%;
+            background: #ddd;
+            padding: 10px;
+            box-sizing: border-box;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        section {
+            float: left;
+            width: 60%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        aside {
+            float: left;
+            width: 20%;
+            background: #ddd;
+            padding: 10px;
+            box-sizing: border-box;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        footer {
+            clear: both;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body>
+<header>
+    <h1>Your Website</h1>
+</header>
+
+<nav>
+    <!-- Navigation links go here -->
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'add_article' %}">Add Article</a></li>
+        {% if user.is_authenticated %}
+            <!-- If the user is authenticated, display a logout link -->
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+            <!-- If the user is not authenticated, display a register and login link -->
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<section>
+    {% block content %}{% endblock %}
+</section>
+
+<aside>
+    <!-- Sidebar content goes here -->
+    <h2>Sidebar</h2>
+    <p>This is the sidebar content.</p>
+</aside>
+
+<footer>
+    <p>&copy; 2023 Your Website. All rights reserved.</p>
+</footer>
+</body>
+</html>
